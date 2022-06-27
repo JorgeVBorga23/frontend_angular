@@ -1,0 +1,63 @@
+<div class="container mt-5">
+  <div class="container col-md-6">
+    <form [formGroup]="formgroup" (ngSubmit)="registrarUsuario()">
+      <input
+        class="form-control mb-3"
+        type="text"
+        placeholder="Numero de control"
+        formControlName="numeroControl"
+        required
+      />
+      <input
+        class="form-control mb-3"
+        type="password"
+        formControlName="password"
+        placeholder="Contraseña"
+        required
+      />
+      <input
+        type="text"
+        class="form-control"
+        formControlName="nombreC"
+        placeholder="Nombre completo"
+        required
+      />
+
+      <div class="form-group">
+        <label for="creditoscomple" class="form-control"
+          >Creditos complementarios</label
+        >
+        <input
+          type="checkbox"
+          class="form-control"
+          formControlName="creditoscomple"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="" class="form-control">Servicio Social</label>
+        <input
+          type="checkbox"
+          class="form-control"
+          formControlName="servicio"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="" class="form-control">80% creditos</label>
+        <input
+          type="checkbox"
+          class="form-control"
+          formControlName="porcentcreditos"
+          required
+        />
+      </div>
+
+      <button class="form-control btn-primary" type="submit">
+        Registrarme
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,120 @@
+<div class="card col-md-6 offset-md-3">
+  <div class="card-body text-center">
+    Bienvenido al sistema para solicitar proyectos de residencia!
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-5">
+    <div class="card mt-4" style="width: 100%">
+      <div class="card-body">
+        <div class="card-title">Datos del alumno</div>
+        <div class="row p-4">
+          <strong>Numero de Control:</strong>
+          <p class="ml-auto h4">{{ usuario.numeroControl }}</p>
+        </div>
+        <br />
+
+        <div class="row p-4">
+          <strong>Nombres:</strong>
+          <p class="ml-auto h4">{{ usuario.nombreC }}</p>
+        </div>
+        <br />
+
+        <div class="card-title">Requisitos para solicitar residencia</div>
+        <div class="row p-4">
+          <strong>Creditos complementarios:</strong>
+          <ng-container
+            *ngIf="usuario.creditoscomple == 1; else noCompletado"
+          >
+            <button class="btn-success ml-auto" disabled>Completado ✔</button>
+          </ng-container>
+          <ng-template #noCompletado>
+            <button class="btn-danger ml-auto" disabled>Sin completar ✘</button>
+          </ng-template>
+        </div>
+        <br />
+
+        <div class="row p-4">
+          <strong>Servicio social:</strong>
+          <ng-container
+            *ngIf="usuario.serviciosocial == 1; else noCompletado1"
+          >
+            <button class="btn-success ml-auto" disabled>Completado ✔</button>
+          </ng-container>
+          <ng-template #noCompletado1>
+            <button class="btn-danger ml-auto" disabled>Sin completar ✘</button>
+          </ng-template>
+        </div>
+        <br />
+
+        <div class="row p-4">
+          <strong>80% Creditos:</strong>
+          <ng-container
+            *ngIf="usuario.porcentcreditos == 1; else noCompletado2"
+          >
+            <button class="btn-success ml-auto" disabled>Completado ✔</button>
+          </ng-container>
+          <ng-template #noCompletado2>
+            <button class="btn-danger ml-auto" disabled>Sin completar ✘</button>
+          </ng-template>
+        </div>
+        <ng-container *ngIf="cumpleRequisitos; else NoCumple">
+          <p class="h2 text-success">Cumples los requisitos</p>
+        </ng-container>
+        <ng-template #NoCumple>
+          <p class="h2 text-danger">No cumples los requisitos</p>
+        </ng-template>
+        <strong class="h3"
+          ><ng-container *ngIf="nombreProyecto != ' '"
+            >Proyecto solicitado: {{ nombreProyecto }}</ng-container
+          ></strong
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <div class="card mt-4" style="width: 100%">
+      <table class="table">
+        <thead class="thead-dark">
+          <th>Nombre</th>
+          <th>Duracion</th>
+          <th>Descripcion</th>
+          <th>Lugar</th>
+          <th>Accion</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let r of residencias">
+            <th>{{ r.nombreResidencia }}</th>
+            <th>{{ r.duracionResidencia }}</th>
+            <th>{{ r.descripcionResidencia }}</th>
+            <th>{{ r.lugarResidencia }}</th>
+            <th>
+              <ng-container *ngIf="tieneProyecto || !cumpleRequisitos; else SinProyecto">
+                <button
+                  disabled
+                  class="btn btn-primary text-light"
+                  (click)="solicitar(r.idResidencia)"
+                >
+                  Solicitar
+                </button>
+              </ng-container>
+              <ng-template #SinProyecto>
+                <a
+                  class="btn btn-primary text-light"
+                  (click)="solicitar(r.idResidencia)"
+                  >Solicitar</a
+                ></ng-template
+              >
+              <a class="btn btn-success text-light" (click)="editar(r.idResidencia)">Editar</a>
+              <a
+                class="btn btn-danger text-light"
+                (click)="borrar(r.idResidencia)"
+                >Borrar</a
+              >
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <div class="container col-md-6">
+    <form [formGroup]="formgroup" (ngSubmit)="actualizarUsuario()">
+      <input
+        class="form-control mb-3"
+        type="text"
+        placeholder="Numero de control"
+        formControlName="numeroControl"
+        required
+      />
+      <input
+        class="form-control mb-3"
+        type="password"
+        formControlName="password"
+        placeholder="Contraseña"
+        required
+      />
+      <input
+        type="text"
+        class="form-control"
+        formControlName="nombreC"
+        placeholder="Nombre completo"
+        required
+      />
+
+      <button class="form-control btn-primary" type="submit">
+        Actualizar mis datos
+      </button>
+    </form>
+  </div>
+</div>

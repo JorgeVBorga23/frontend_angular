@@ -1,0 +1,12 @@
+
+<div class="container">
+  <div class="container col-md-6 ">
+    <form [formGroup]="formgroup" (ngSubmit)="editarProyecto()">
+        <input class="form-control mb-3" type="text" placeholder="Nombre Residencia" formControlName="nombreProyecto" required>
+        <input  class="form-control mb-3"type="text" formControlName="duracionProyecto" placeholder="Duracion del Proyecto" required>
+        <input type="text" class="form-control" formControlName="lugarProyecto" placeholder="Lugar del proyecto" required>
+        <input type="text" class="form-control" formControlName="descripcionProyecto" placeholder="Descripcion del proyecto" required>
+        <button  class="form-control btn-primary"type="submit">Actualizar proyecto</button>
+    </form>
+  </div>
+</div>
